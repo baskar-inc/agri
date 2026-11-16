@@ -1,78 +1,106 @@
-# AgrIDrone Mission Control Dashboard
+# AgrIDrone — Smart Agriculture Drone Monitoring System
 
-A high-end React dashboard for Smart Agriculture Drone Monitoring.
+## Project Overview
 
-## Setup
+**Design and Implementation of Drone Integrated Plant Health System**
 
-### 1. Install dependencies
+AgrIDrone is a final-year engineering project combining a drone/camera sensing workflow with a web-based agricultural monitoring dashboard.
+
+## System Scope
+
+**Field / Drone → Camera & Sensor Data → Data Transmission → Supabase → React/Vite Dashboard → Plant-Health Monitoring**
+
+### Technology areas
+- React + Vite
+- Tailwind CSS and Lucide React
+- Supabase database and storage
+- ESP32-CAM / OV2640 camera system
+- Pixhawk-based flight-control integration
+- 640×480 VGA image-capture workflow
+- Environmental sensor data such as temperature, humidity, and soil-related measurements
+
+## Repository Status
+
+| Area | Status |
+|---|---|
+| React/Vite project foundation | Present |
+| Dashboard configuration/documentation | Present |
+| Supabase configuration template | Present |
+| System block diagram | Present |
+| Project preview asset | Present |
+| Original source archive | Not currently visible in this branch |
+| Embedded source files | Not currently visible in this branch |
+| Full end-to-end hardware deployment | Requires verification against original project files |
+| AI/ML plant-disease model integration | Not claimed as completed |
+
+> This repository must only claim hardware, AI/ML, and end-to-end features supported by the actual source/evidence.
+
+## Dashboard Scope
+
+The documented dashboard areas include:
+- System/drone status
+- GPS and operating mode
+- Environmental/sensor readings
+- Latest drone image
+- Historical sensor trends
+- Plant-health insights
+
+## Supabase Configuration
+
+Create a local `.env` from `.env.example` and run:
+
 ```bash
 npm install
-```
-
-### 2. Configure Supabase
-Copy `.env.example` to `.env` and fill in your keys:
-```bash
 cp .env.example .env
-```
-
-Edit `.env`:
-```
-VITE_SUPABASE_URL=https://rfhdebvmyweobneoudon.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
-```
-
-> Use the **anon** key (not service_role) for the frontend dashboard.
-> Make sure your `sensor_data` table and `drone-images` bucket have read policies.
-
-### 3. Run development server
-```bash
 npm run dev
 ```
 
-Open http://localhost:5173
+Production verification:
 
-### 4. Build for production
 ```bash
 npm run build
 npm run preview
 ```
 
----
+Never commit a real `.env` file or privileged Supabase credentials.
 
-## Supabase Requirements
+## Supabase Data Model
 
-### Table: sensor_data
-```sql
-create table sensor_data (
-  id bigint generated always as identity primary key,
-  temperature float,
-  humidity float,
-  soil float,
-  created_at timestamp default now()
-);
--- Allow public read
-create policy "allow_read" on sensor_data for select to anon using (true);
+### sensor_data
+Expected fields currently documented are `id`, `temperature`, `humidity`, `soil`, and `created_at`.
+
+### drone-images
+Supabase Storage bucket used for drone image assets.
+
+## Repository Structure
+
+```text
+agri/
+├── README.md
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── eslint.config.js
+├── preview.webp
+├── agridrone_system_block_diagram.png
+└── docs/
+    ├── architecture.md
+    ├── hardware.md
+    ├── software.md
+    └── project-status.md
 ```
 
-### Storage: drone-images bucket
-- Must be **Public bucket** (toggle ON in dashboard)
-- OR add SELECT policy for anon role
+The source tree will be expanded when the original application/embedded source archive is restored.
 
----
+## Engineering Value
 
-## Folder Structure
-```
-src/
-├── App.jsx                  # Main layout + data fetching
-├── main.jsx                 # Entry point
-├── index.css                # Global styles + design tokens
-├── lib/
-│   └── supabase.js          # Supabase client + fetch helpers
-└── components/
-    ├── StatusBar.jsx         # Top status bar (online/GPS/mode)
-    ├── SensorCard.jsx        # Animated sensor cards with ring gauge
-    ├── DroneImagePanel.jsx   # Latest drone image viewer
-    ├── AIInsightPanel.jsx    # AI recommendations panel
-    ├── HistoryPanel.jsx      # Sparkline history charts
-    └── SparkLine.jsx         # SVG sparkline component
-```
+The project spans embedded sensing/camera capture, drone integration, data transmission, cloud persistence, and a React monitoring interface.
+
+## Interview Integrity
+
+Describe only the features actually implemented and supported by repository evidence. Do not claim an AI model, autonomous flight capability, disease-classification accuracy, or production deployment unless the corresponding implementation and evidence are present.
