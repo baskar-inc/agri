@@ -2,11 +2,11 @@
 
 A final-year engineering project focused on integrating a drone-mounted imaging system with a plant-health monitoring application.
 
-## Project Status
+## Repository Status
 
-**Reconstructed project repository — active development/documentation**
+**Software reconstruction completed for the available project scope.**
 
-This repository contains the software workspace and documentation for the final-year project. The repository is being reconstructed from the project work completed so far; unfinished components are explicitly marked rather than presented as complete.
+The repository now contains a runnable React/Vite monitoring application, project documentation, safe Supabase configuration scaffolding, and an explicit boundary between implemented software and hardware artifacts that still require the original source/configuration files.
 
 ## System Overview
 
@@ -17,8 +17,20 @@ The project combines:
 - Pixhawk-based flight-control integration
 - PWM-triggered image capture
 - A React + Vite web application
-- Supabase for application data/storage integration
-- Plant-health monitoring and visualization
+- Supabase integration scaffolding
+- Plant-health monitoring and rule-based visualization
+
+## Implemented in this repository
+
+- Responsive AgriDrone monitoring dashboard
+- Field sensor snapshot view
+- Selectable field monitoring
+- Rule-based plant-health demonstration analysis
+- Pixhawk / ESP32-CAM / PWM workflow presentation
+- Optional Supabase client initialization
+- Safe demo mode when live Supabase configuration is unavailable
+- Project architecture and implementation documentation
+- Public environment configuration template without credentials
 
 ## Technology Stack
 
@@ -41,53 +53,46 @@ The project combines:
 
 ## Repository Structure
 
-```
-.
-├── src/                 # React application source
-├── public/              # Static frontend assets
-├── docs/                # Project architecture and technical documentation
-├── package.json         # Frontend dependencies and scripts
-├── vite.config.*        # Vite configuration
-└── README.md            # Project overview
-```
+- src/ — React application source
+- src/lib/ — Supabase integration
+- docs/ — Architecture and implementation documentation
+- public/ — Static frontend assets
+- .env.example — Safe public configuration template
+- package.json — Frontend dependencies and scripts
+- vite.config.js — Vite configuration
+- README.md — Project overview
 
 ## Core Workflow
 
-The intended system flow is:
-
 **Drone flight → Pixhawk control → camera trigger → image capture → application/backend integration → plant-health analysis and visualization**
 
-The repository documents the implementation that actually exists. Future integrations and unfinished functionality will be tracked separately instead of being claimed as completed features.
+The dashboard currently uses local demonstration data unless a Supabase project is configured. This prevents the repository from claiming a live database schema that has not been verified.
+
+## Hardware Source Boundary
+
+ESP32-CAM firmware, Pixhawk flight configuration, wiring diagrams, and original demonstration media are not fabricated. They should be added only when the corresponding original project files are available.
 
 ## Development
 
 Install dependencies:
 
-```bash
 npm install
-```
 
 Start the development server:
 
-```bash
 npm run dev
-```
 
 Build for production:
 
-```bash
 npm run build
-```
 
 Run lint checks:
 
-```bash
 npm run lint
-```
 
-## Project Documentation
+## Security
 
-See the `docs/` directory for the reconstructed architecture and implementation notes.
+Do not commit real Supabase credentials or private configuration values. Use .env.example as the public template.
 
 ## Author
 
