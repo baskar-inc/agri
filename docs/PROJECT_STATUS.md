@@ -1,35 +1,57 @@
 # Project Reconstruction Status
 
-## Completed
+## Status
+
+**Complete for the available project resources.**
+
+The repository has been reconstructed as far as the available project source, implementation context, and previously established project details support.
+
+## Completed repository work
 
 - React + Vite application workspace
 - Responsive plant-health monitoring dashboard
-- Field sensor monitoring UI
+- Field selection and sensor snapshot display
+- Temperature, humidity, and soil-moisture metrics
 - Rule-based demonstration plant-health analysis
 - Pixhawk / ESP32-CAM / OV2640 workflow representation
-- Optional Supabase client integration scaffolding
+- PWM camera-trigger workflow representation
+- Supabase client integration scaffolding
 - Safe .env.example configuration template
+- Environment credential protection through .gitignore
 - Project README
 - System architecture documentation
-- Implementation notes
+- Implementation documentation
+- Hardware integration documentation
+- Data and analysis documentation
+- Development setup documentation
+- Project scope and reconstruction-boundary documentation
 
-## Verified repository boundary
+## Verified implementation boundary
 
-The repository contains a runnable software implementation for the available project scope. Live Supabase data is optional and is not assumed to exist.
+The frontend source is present in the repository and represents the available software implementation.
 
-## Pending original project artifacts
+The application can operate with local demonstration data without requiring a live Supabase project.
 
-These are intentionally not fabricated:
+When Supabase environment variables are configured, the application can initialize the Supabase client and attempt the known sensor_data integration point.
 
-- Original ESP32-CAM firmware/source
-- Original Pixhawk/PWM flight configuration
-- Original wiring/circuit documentation
-- Original Supabase schema and storage configuration, if any
-- Original screenshots/demo media
-- Final project report/reference files
+## Resource boundary
 
-When those source artifacts become available, they can be added without changing the current software architecture.
+The following are intentionally not fabricated because their original source artifacts are not available in the resources used for this reconstruction:
+
+- ESP32-CAM firmware/source
+- Pixhawk firmware/parameter configuration
+- Exact PWM channel and pulse configuration
+- Hardware wiring/circuit files
+- Verified Supabase production schema
+- Verified Supabase storage policies
+- Original screenshots or demonstration media
+- Trained AI/ML model source or model weights
+- Final report/reference documents not present in the available resources
+
+Their absence does not prevent the software repository from being complete for the current reconstruction scope.
 
 ## Security
 
-Never commit Supabase service-role keys, private API keys, or other secrets. Use .env.example for public configuration guidance.
+Never commit Supabase service-role keys, private API keys, credentials, or local .env files.
+
+The repository contains only the public environment configuration template.
