@@ -1,98 +1,144 @@
 # Design and Implementation of Drone Integrated Plant Health System
 
-A final-year engineering project focused on integrating a drone-mounted imaging system with a plant-health monitoring application.
+A final-year engineering project that combines drone-based field monitoring, ESP32-CAM/OV2640 imaging, Pixhawk flight-control integration, and a React-based plant-health monitoring application.
 
 ## Repository Status
 
-**Software reconstruction completed for the available project scope.**
+**Reconstruction completed for the project resources currently available.**
 
-The repository now contains a runnable React/Vite monitoring application, project documentation, safe Supabase configuration scaffolding, and an explicit boundary between implemented software and hardware artifacts that still require the original source/configuration files.
+This repository contains the complete software reconstruction that can be supported by the available resources. Unavailable original hardware firmware, flight configuration, wiring files, credentials, and other source artifacts are not fabricated.
 
 ## System Overview
 
-The project combines:
+The project brings together:
 
-- A drone-based aerial platform
-- ESP32-CAM / OV2640 camera hardware
-- Pixhawk-based flight-control integration
-- PWM-triggered image capture
-- A React + Vite web application
-- Supabase integration scaffolding
-- Plant-health monitoring and rule-based visualization
+- Drone-based aerial monitoring
+- Pixhawk flight controller
+- PWM-triggered camera capture
+- ESP32-CAM with OV2640 camera
+- React + Vite monitoring application
+- Supabase integration point
+- Field sensor monitoring
+- Rule-based demonstration plant-health analysis
 
-## Implemented in this repository
+## End-to-End Workflow
+
+**Drone flight → Pixhawk control → PWM camera trigger → ESP32-CAM / OV2640 capture → application/backend integration → plant-health monitoring and visualization**
+
+## Application Features
 
 - Responsive AgriDrone monitoring dashboard
-- Field sensor snapshot view
-- Selectable field monitoring
-- Rule-based plant-health demonstration analysis
-- Pixhawk / ESP32-CAM / PWM workflow presentation
-- Optional Supabase client initialization
-- Safe demo mode when live Supabase configuration is unavailable
-- Project architecture and implementation documentation
-- Public environment configuration template without credentials
+- Field selection and sensor snapshot display
+- Temperature, humidity, and soil-moisture metrics
+- Demonstration plant-health status and scoring
+- Rule-based monitoring guidance
+- Pixhawk / ESP32-CAM / PWM workflow visualization
+- Optional Supabase connection
+- Safe demo mode when Supabase configuration is unavailable
+- Mobile-responsive layout
 
 ## Technology Stack
 
 ### Frontend
-- React
+- React 19
 - Vite
 - JavaScript
-- Tailwind CSS
+- CSS
 - Lucide React
 
-### Backend / Data
+### Backend / Data Integration
 - Supabase
 - Supabase JavaScript client
+- Known application integration point: sensor_data
+- Known image-storage integration context: drone-images
 
-### Embedded / Hardware
-- ESP32-CAM
-- OV2640 camera
+### Hardware / Embedded
+- Drone platform
 - Pixhawk
 - PWM trigger interface
+- ESP32-CAM
+- OV2640 camera
+- 640×480 VGA capture configuration
 
 ## Repository Structure
 
-- src/ — React application source
-- src/lib/ — Supabase integration
-- docs/ — Architecture and implementation documentation
-- public/ — Static frontend assets
-- .env.example — Safe public configuration template
-- package.json — Frontend dependencies and scripts
-- vite.config.js — Vite configuration
-- README.md — Project overview
+~~~text
+agri/
+├── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── lib/
+│       └── supabase.js
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── DATA_AND_ANALYSIS.md
+│   ├── HARDWARE_INTEGRATION.md
+│   ├── IMPLEMENTATION.md
+│   ├── PROJECT_SCOPE.md
+│   ├── PROJECT_STATUS.md
+│   └── SETUP.md
+├── public/
+├── .env.example
+├── .gitignore
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
+~~~
 
-## Core Workflow
+## Data and Analysis Boundary
 
-**Drone flight → Pixhawk control → camera trigger → image capture → application/backend integration → plant-health analysis and visualization**
+The current dashboard uses local demonstration data when a live Supabase configuration is not available.
 
-The dashboard currently uses local demonstration data unless a Supabase project is configured. This prevents the repository from claiming a live database schema that has not been verified.
+The plant-health panel is **rule-based demonstration logic**. It is not represented as a trained AI/ML model.
 
-## Hardware Source Boundary
+The repository does not invent a Supabase table schema, storage policy, AI model, hardware firmware, Pixhawk parameter set, wiring diagram, or other unavailable implementation detail.
 
-ESP32-CAM firmware, Pixhawk flight configuration, wiring diagrams, and original demonstration media are not fabricated. They should be added only when the corresponding original project files are available.
+## Hardware Boundary
+
+The repository documents the hardware integration supported by the available project resources. Original ESP32-CAM firmware, Pixhawk configuration files, wiring diagrams, and hardware test artifacts are not fabricated.
+
+See:
+
+- docs/ARCHITECTURE.md
+- docs/HARDWARE_INTEGRATION.md
+- docs/DATA_AND_ANALYSIS.md
+- docs/PROJECT_SCOPE.md
 
 ## Development
 
 Install dependencies:
 
+~~~bash
 npm install
+~~~
 
 Start the development server:
 
+~~~bash
 npm run dev
+~~~
 
 Build for production:
 
+~~~bash
 npm run build
+~~~
 
 Run lint checks:
 
+~~~bash
 npm run lint
+~~~
+
+For detailed setup instructions, see docs/SETUP.md.
 
 ## Security
 
-Do not commit real Supabase credentials or private configuration values. Use .env.example as the public template.
+Never commit real Supabase credentials or private configuration values.
+
+Use .env.example as the public configuration template.
 
 ## Author
 
