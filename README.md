@@ -1,27 +1,78 @@
-# Agri
+# AgrIDrone Mission Control Dashboard
 
-A React + Vite application project for agricultural use-case exploration.
+A high-end React dashboard for Smart Agriculture Drone Monitoring.
 
-## Project Status
+## Setup
 
-**Development / prototype**
+### 1. Install dependencies
+```bash
+npm install
+```
 
-This repository is an application workspace rather than a completed production system. The current codebase is based on the React + Vite stack and is being developed incrementally.
+### 2. Configure Supabase
+Copy `.env.example` to `.env` and fill in your keys:
+```bash
+cp .env.example .env
+```
 
-## Technology
+Edit `.env`:
+```
+VITE_SUPABASE_URL=https://rfhdebvmyweobneoudon.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key_here
+```
 
-- React
-- Vite
-- JavaScript
-- ESLint
+> Use the **anon** key (not service_role) for the frontend dashboard.
+> Make sure your `sensor_data` table and `drone-images` bucket have read policies.
 
-## Repository Purpose
+### 3. Run development server
+```bash
+npm run dev
+```
 
-This project is kept as an application-development experiment alongside my Oracle SQL / ERP-focused work.
+Open http://localhost:5173
 
-For the Oracle database portfolio project, see [Oracle Procurement & Invoice Management System](https://github.com/baskar-inc/oracle-procurement-invoice-management-system).
+### 4. Build for production
+```bash
+npm run build
+npm run preview
+```
 
-## Author
+---
 
-**Baskar R**  
-Aspiring Oracle ERP / SQL / PL/SQL professional
+## Supabase Requirements
+
+### Table: sensor_data
+```sql
+create table sensor_data (
+  id bigint generated always as identity primary key,
+  temperature float,
+  humidity float,
+  soil float,
+  created_at timestamp default now()
+);
+-- Allow public read
+create policy "allow_read" on sensor_data for select to anon using (true);
+```
+
+### Storage: drone-images bucket
+- Must be **Public bucket** (toggle ON in dashboard)
+- OR add SELECT policy for anon role
+
+---
+
+## Folder Structure
+```
+src/
+├── App.jsx                  # Main layout + data fetching
+├── main.jsx                 # Entry point
+├── index.css                # Global styles + design tokens
+├── lib/
+│   └── supabase.js          # Supabase client + fetch helpers
+└── components/
+    ├── StatusBar.jsx         # Top status bar (online/GPS/mode)
+    ├── SensorCard.jsx        # Animated sensor cards with ring gauge
+    ├── DroneImagePanel.jsx   # Latest drone image viewer
+    ├── AIInsightPanel.jsx    # AI recommendations panel
+    ├── HistoryPanel.jsx      # Sparkline history charts
+    └── SparkLine.jsx         # SVG sparkline component
+```
