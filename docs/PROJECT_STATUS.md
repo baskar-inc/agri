@@ -1,22 +1,35 @@
 # Project Reconstruction Status
 
-## Completed in this repository
+## Completed
 
 - React + Vite application workspace
-- Supabase JavaScript client dependency
-- Frontend dependency and build configuration
-- Project README reconstructed for the final-year drone project
-- Initial system architecture documentation
+- Responsive plant-health monitoring dashboard
+- Field sensor monitoring UI
+- Rule-based demonstration plant-health analysis
+- Pixhawk / ESP32-CAM / OV2640 workflow representation
+- Optional Supabase client integration scaffolding
+- Safe .env.example configuration template
+- Project README
+- System architecture documentation
+- Implementation notes
 
-## To be added from the original project files
+## Verified repository boundary
 
-- ESP32-CAM firmware/source
-- Pixhawk/PWM integration code or configuration
-- Supabase schema/configuration files that are safe to publish
-- Hardware documentation and wiring details
-- Screenshots and demonstration media
-- Final project report/reference documents
+The repository contains a runnable software implementation for the available project scope. Live Supabase data is optional and is not assumed to exist.
 
-## Rule for this repository
+## Pending original project artifacts
 
-Only source files and claims that can be verified from the project materials will be added as completed work. Secrets, API keys, service-role credentials, and private configuration values must not be committed.
+These are intentionally not fabricated:
+
+- Original ESP32-CAM firmware/source
+- Original Pixhawk/PWM flight configuration
+- Original wiring/circuit documentation
+- Original Supabase schema and storage configuration, if any
+- Original screenshots/demo media
+- Final project report/reference files
+
+When those source artifacts become available, they can be added without changing the current software architecture.
+
+## Security
+
+Never commit Supabase service-role keys, private API keys, or other secrets. Use .env.example for public configuration guidance.
